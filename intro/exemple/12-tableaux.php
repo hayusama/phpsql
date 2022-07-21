@@ -30,9 +30,64 @@
 
                 echo "<hr><h2>AFFICHAGE</h2>";
                 
+                echo "<ol>";
+                    for($i=0;$i<count($liens);$i++){
+                        echo "<li>{$liens[$i]}</li>";
+                    }
+                echo "</ol>";
+
+                echo "<ol>";
+                    foreach($personne as $key => $value){
+                        echo "<li>ind : ".$key." | Valeur : ".$value."</li>";
+                    }
+                echo "</ol>";
+
+
+                echo "<hr><h2>BOUGER LE POINTEUR DU TABLEAU</h2>";
                 for($i=0;$i<count($liens);$i++){
-                    echo $liens[$i];
+                    //VALEUR COURANTE
+                    echo $i." = ".current($liens);
+                    //ON AVANCE LE CURSEUR DE 1 CASE
+                    next($liens);
                 }
+                //replace le pointeur du tableau au début
+                echo "<br>";
+                reset($liens);
+                $i=0;
+
+                //CURRENT VALEUR ACTUELLE DE LA CASE DU TABLEAU
+                //EMPTY = SI VIDE // !empty SI NON VIDE
+                while(!empty(current($personne))){
+                    echo $i." = ".current($personne);
+                    next($personne);
+                    $i++;
+                }
+
+                echo "<hr><h2>MANIPULATION TABLEAU</h2>";
+                echo "<hr><h3>AJOUT</h3>";
+                $tab = ["orange","fraise"];
+                //POSSIBILITE 1 UTile quand on a qu'un element
+                $tab[] = "pomme";
+                //POSSIBILITE 2 plusieurs elements
+                array_push($tab,"banane","poire","peche");
+                var_dump($tab);
+
+                array_unshift($tab,"Citron");
+                var_dump($tab);
+
+                echo "<hr><h3>SUPPRESSION</h3>";
+                //SUPPRESSION
+                $lastElm = array_pop($tab);
+                //AJOUT DEBUT TABLEAU
+                array_unshift($tab,$lastElm);
+                var_dump($tab);
+
+                //SUPPRESSION PREMIER ELEMENT
+                $firstDelete = array_shift($tab);
+                var_dump($tab,$firstDelete);
+
+
+
 
                 ?>
         </div>
