@@ -139,7 +139,7 @@
                 echo "<ul>";
                 // Foreach pour rentrer dans les champs (nom, prenom, mail, passion) -- key = field -- value = info
                 foreach($infos as $field => $info){
-                    // Lorsque que la value (info) est égale à passion, on ajoute un nouveau UL
+                    // is array verifie si la valeur est un tableau
                     if(is_array($info)){
                         echo "<li>".$field." : "."</li>";
                         echo '<ul>';
