@@ -131,23 +131,30 @@
                 echo "bonjour {$test[0]["prenom"]}  {$test[0]["nom"]}";
                 echo "bonjour ".$test[0]["prenom"]."  ".$test[0]["nom"];
 
-                utilisateur 1 :
-                    - id => 2
-                    - nom => XXXX
-                    - prenom => XXXX
-                    - passion :
-                        - foot
-                        -basket
-                        -tennis
-                utilisateur 2 :
-                    - id => 2
-                    - nom => XXXX
-                    - prenom => XXXX
-                    - passion :
-                        - foot
-                        -basket
-                        -tennis
+                echo "<hr>";
 
+            // Foreach pour rentrer dans le tableau Utilisateur
+            foreach($test as $nb => $infos){
+                echo "Utilisateur n°".($nb+1).": <br>";
+                echo "<ul>";
+                // Foreach pour rentrer dans les champs (nom, prenom, mail, passion) -- key = field -- value = info
+                foreach($infos as $field => $info){
+                    // Lorsque que la value (info) est égale à passion, on ajoute un nouveau UL
+                    if(is_array($info)){
+                        echo "<li>".$field." : "."</li>";
+                        echo '<ul>';
+                        // For pour parcourir le tableau Passion
+                        for($i = 0; $i < count($info); $i++){
+                            echo '<li>'.$info[$i]."</li>";
+                        }
+                        echo '</ul>';
+                    // Sinon on agit normalement.
+                    } else {
+                        echo "<li>".$field." : ".$info."</li>";
+                    }     
+                }
+                echo "</ul>";
+            }
                 ?>
         </div>
     <!-- Bootstrap JavaScript Libraries -->
