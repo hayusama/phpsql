@@ -86,8 +86,67 @@
                 $firstDelete = array_shift($tab);
                 var_dump($tab,$firstDelete);
 
+                echo "<hr><h2>TABLEAUX ASSOCIATIFS</h2>";
+                $person = [
+                    "nom" => "Sébastien",
+                    'age' => 46
+                ];
 
+                echo "Bonjour {$person['nom']}, tu as {$person['age']} ans";
+                //MODIFICATION 
+                $person['age'] = 30;
+                //AJOUT
+                $person['taille'] = 170;
 
+                var_dump($person);
+
+                echo "<hr><h2>TABLEAUX ASSOCIATIFS COMPLEXE</h2>";
+                $test = [
+                    0 => [
+                        "id" => 1,
+                        "nom" => "Dupond",
+                        "prenom" => "Jean",
+                        "mail" => "j.d@test.fr",
+                        "passion" => ["foot","jeux vidéo","argent"]                    
+                    ],
+                    1 => [
+                        "id" => 2,
+                        "nom" => "Allard",
+                        "prenom" => "Sophie",
+                        "mail" => "a.s@test.fr",
+                        "passion" => ["Basket","Tennis","argent"]                    
+                    ],
+                    2 => [
+                        "id" => 3,
+                        "nom" => "Paris",
+                        "prenom" => "Antho",
+                        "mail" => "a.p@test.fr",
+                        "passion" => ["peche","guitare","argent"]                    
+                    ]
+                ];
+
+                echo "<p>Afficher le mail de la deuxieme ligne</p>";
+                echo $test[1]["mail"]."<br>";
+                echo "<p>Afficher à l'écran bonjour Jean Dupond</p>";
+                echo "bonjour {$test[0]["prenom"]}  {$test[0]["nom"]}";
+                echo "bonjour ".$test[0]["prenom"]."  ".$test[0]["nom"];
+
+                utilisateur 1 :
+                    - id => 2
+                    - nom => XXXX
+                    - prenom => XXXX
+                    - passion :
+                        - foot
+                        -basket
+                        -tennis
+                utilisateur 2 :
+                    - id => 2
+                    - nom => XXXX
+                    - prenom => XXXX
+                    - passion :
+                        - foot
+                        -basket
+                        -tennis
 
                 ?>
         </div>
