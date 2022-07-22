@@ -133,28 +133,63 @@
 
                 echo "<hr>";
 
-            // Foreach pour rentrer dans le tableau Utilisateur
-            foreach($test as $nb => $infos){
-                echo "Utilisateur n°".($nb+1).": <br>";
-                echo "<ul>";
-                // Foreach pour rentrer dans les champs (nom, prenom, mail, passion) -- key = field -- value = info
-                foreach($infos as $field => $info){
-                    // is array verifie si la valeur est un tableau
-                    if(is_array($info)){
-                        echo "<li>".$field." : "."</li>";
-                        echo '<ul>';
-                        // For pour parcourir le tableau Passion
-                        for($i = 0; $i < count($info); $i++){
-                            echo '<li>'.$info[$i]."</li>";
+                 // Foreach pour rentrer dans le tableau Utilisateur
+                    foreach($test as $nb => $infos){
+                        echo "Utilisateur n°".($nb+1).": <br>";
+                        echo "<ul>";
+                        // Foreach pour rentrer dans les champs (nom, prenom, mail, passion) -- key = field -- value = info
+                        foreach($infos as $field => $info){
+                            // is array verifie si la valeur est un tableau
+                            if(is_array($info)){
+                                echo "<li>".$field." : "."</li>";
+                                echo '<ul>';
+                                // For pour parcourir le tableau Passion
+                                for($i = 0; $i < count($info); $i++){
+                                    echo '<li>'.$info[$i]."</li>";
+                                }
+                                echo '</ul>';
+                            // Sinon on agit normalement.
+                            } else {
+                                echo "<li>".$field." : ".$info."</li>";
+                            }     
                         }
-                        echo '</ul>';
-                    // Sinon on agit normalement.
-                    } else {
-                        echo "<li>".$field." : ".$info."</li>";
-                    }     
+                        echo "</ul>";
+                    }
+
+                echo "<hr><h2>CLE TABLEAU</h2>";
+                echo "ARRAY KEYS<br>";
+                var_dump($person,array_keys($person));
+                //UNE COPIE DE MON TABLEAU PERSON OU DEDANS J'AURAI KEY = INDEXATION NUMERIQUE
+                //VALUE = KEY DU TABLEAU PERSON
+                $cleTab = array_keys($person);
+                for($i=0;$i<count($cleTab);$i++){
+                    echo $cleTab[$i]. " me permet de sortir : ".$person[$cleTab[$i]]."<br>";
                 }
-                echo "</ul>";
-            }
+
+                echo "<hr><h2>EXPORT TABLEAU</h2>";
+                //POUR LES TABLEAU INDEXE NUMERIQUEMENT 0,1,2,3,4
+                $person = array("Seb",45,"bleu","rouge","pomme");
+                //ON CREE UNE LISTE A TROU OU ON CREE DES VARIABLES EN MAPPANT LE TABLEAU INITIAL
+                list(,$age,,$color) = $person;
+                //EQUIVALENT
+                $age = $person[1];
+                var_dump($age,$color);
+
+
+                //UTILISER AVEC TABLEAU ASSOCIATIF
+                $person = array(
+                    "name" => "Anthony",
+                    "age" => 34,
+                );
+                extract($person);
+                //EXTRAIT DU TABLEAU LES CLES ET EN CREE DES VARIABLES
+                //QUI VONT CONTENIR LA VALEUR ASSOCIE A LA CLE
+                echo "$name $age <br>";
+
+                //EQUIVALENT
+                $name = $person["name"];
+                $age = $person["age"];
+
                 ?>
         </div>
     <!-- Bootstrap JavaScript Libraries -->
